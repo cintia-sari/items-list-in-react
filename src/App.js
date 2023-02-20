@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import React from "react";
 import './App.css';
 import AddGroup from './Components/AddGroup/AddGroup';
 import GroupList from './Components/GroupList/GroupList';
@@ -7,9 +8,14 @@ function App() {
   const [state,setState]= useState(
     {
       group:[{
-        title : "New Item",
+        title : "New Group",
         rename: false,
-        id : 0 
+        id : 0, 
+        itemsList:[{
+          name :"Title name",
+          itemrename:false,
+          id:0
+        }]
       }
       ],
       nextId:1 ,
@@ -20,7 +26,7 @@ function App() {
   function groupAddition(){
     setState({
       group:[...state.group,{
-        title: "New Item",
+        title: "New Group",
         rename:false,
         id: state.nextId
       }],
@@ -35,8 +41,8 @@ function App() {
       })
   }
 
-  function renameButton(id){//Eza f
-     const changeGroupName= state.group.map(item=>{
+  function editingButton(id){//Eza f
+     const chooseItem= state.group.map(item=>{
         if(String(item.id) === id){
           item.rename = !item.rename;
         }
@@ -44,10 +50,29 @@ function App() {
      })
 
     setState({
-      group: changeGroupName,
-      //nextId: state.nextId
+      group: chooseItem,
+      nextId: state.nextId
     })
     
+  }
+
+  function renameButton(newName,id){
+    const rename = state.group.map(item=>{
+      if( String(item.id) === id){
+        item.title= newName
+      }
+    return item 
+  })
+    setState({
+      group: rename,
+      nextId: state.nextId
+    })
+      
+    
+  }
+
+  function newItem(id){
+
   }
 
   return (
@@ -56,7 +81,10 @@ function App() {
       <GroupList 
           groupList={state.group}
           handleDelet={handleDelet}
-          renameButton={renameButton}/>
+          editingButton={editingButton}
+          renameButton={renameButton}
+          newItem={newItem}/>
+      <ItemList/>
     </div>
   );
 }

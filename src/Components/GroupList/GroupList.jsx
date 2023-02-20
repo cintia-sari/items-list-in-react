@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react';
 
 export default function GroupList(props) {
 
@@ -6,28 +6,47 @@ export default function GroupList(props) {
      props.handleDelet(e.target.dataset.id);
   }
 
-  const rename=(e)=>{
-      props.renameButton(e.target.dataset.id)
+  const editing=(e)=>{
+      props.editingButton(e.target.dataset.id)
   }
   
-  const beállít = 
-  <div>Valami</div>;
+  const rename= (e)=>{
+      props.renameButton(e.target.value, e.target.dataset.id)
+  }
 
-  const alap = `
-  <div key={group.id}>
-  {group.title}
-  <button onClick={delet} data-id={group.id}>Töröl</button>
-  <button onClick={rename} data-id={group.id}>{group.rename ? "beállít" : "Átnevez"}</button>
-  <button>Tétel hozzáadása</button>
-</div>);`
+  const addItem=(e)=>{
+    props.newItem(e.target.dataset.id)
+  }
+
 
   const groupList = props.groupList.map(group=>(
-    <div key={group.id}>
-    {group.title}
-    <button onClick={delet} data-id={group.id}>Töröl</button>
-    <button onClick={rename} data-id={group.id}>{group.rename ? "beállít" : "Átnevez"}</button>
-    <button>Tétel hozzáadása</button>
-  </div>))
+    <div>{ group.rename ?
+         <div key={group.id}>
+            <label>
+              <input 
+              type="text"
+              onChange={rename}
+              name="item-name"
+              value={group.title}
+              data-id={group.id}
+              required
+              />
+              <button 
+                onClick={editing}
+                data-id={group.id}
+                type='submit'>Save</button>
+            </label>
+         </div>
+         : 
+         <div key={group.id}>
+            {group.title}
+            <button onClick={delet} data-id={group.id}>Delet</button>
+            <button onClick={editing} data-id={group.id}>Edit</button>
+            <button onClick={addItem} data-id={group.id}>Add Item</button>
+          </div>}
+     </div>))
+
+
   return (
     <>
       {groupList}
