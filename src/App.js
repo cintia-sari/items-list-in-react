@@ -16,7 +16,7 @@ function App() {
           name :"Title name",
           itemrename:false,
           id:0
-        }]
+        }],
       }
       ],
       nextId:1 ,
@@ -72,9 +72,7 @@ function App() {
     
   }
 
-  function newItem(id){
-
-  }
+  function newItem(id){}
 
   return (
     <div className="App">
@@ -85,7 +83,8 @@ function App() {
           editingButton={editingButton}
           renameButton={renameButton}
           newItem={newItem}/>
-      <ItemList/>
+      <ItemList
+        itemList={state.group[0].itemsList}/>
     </div>
   );
 }
