@@ -4,7 +4,9 @@ export default function ItemList(props) {
 
     const itemList= props.itemList.map(item=>(
                 <div key={item.id}>
-                {item.name}
+                    {item.name}
+                    <button>Edit</button>
+
                 </div>
     ));
     

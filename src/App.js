@@ -3,7 +3,7 @@ import React from "react";
 import './App.css';
 import AddGroup from './Components/AddGroup/AddGroup';
 import GroupList from './Components/GroupList/GroupList';
-import ItemList from './Components/ItemList/ItemList';
+
 
 function App() {
   const [state,setState]= useState(
@@ -16,20 +16,24 @@ function App() {
           name :"Title name",
           itemrename:false,
           id:0
-        }],
+            }  
+        ],
+        nextItemId:1 
       }
       ],
       nextId:1 ,
-
     }
   );
+
 
   function groupAddition(){
     setState({
       group:[...state.group,{
         title: "New Group",
         rename:false,
-        id: state.nextId
+        id: state.nextId,
+        itemsList:[],
+        nextItemId: state.group.nextItemId 
       }],
       nextId: state.nextId +1,
     })
@@ -72,7 +76,12 @@ function App() {
     
   }
 
-  function newItem(id){}
+ /* function AddNewItem(id){
+    const newItem = state.group.map(item=>{
+      if(String(item.id)=== id){
+        console.log(state.group[0].itemsList)
+        
+      }})}*/
 
   return (
     <div className="App">
@@ -82,9 +91,8 @@ function App() {
           handleDelet={handleDelet}
           editingButton={editingButton}
           renameButton={renameButton}
-          newItem={newItem}/>
-      <ItemList
-        itemList={state.group[0].itemsList}/>
+         // AddNewItem={AddNewItem}
+        />
     </div>
   );
 }

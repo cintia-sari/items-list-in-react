@@ -1,4 +1,5 @@
 import React from 'react';
+import ItemList from '../ItemList/ItemList';
 
 export default function GroupList(props) {
 
@@ -15,7 +16,7 @@ export default function GroupList(props) {
   }
 
   const addItem=(e)=>{
-    props.newItem(e.target.dataset.id)
+    props.AddNewItem(e.target.dataset.id)
   }
 
 
@@ -44,8 +45,9 @@ export default function GroupList(props) {
             <button onClick={editing} data-id={group.id}>Edit</button>
             <button onClick={addItem} data-id={group.id}>Add Item</button>
           </div>}
+          <ItemList itemList={group.itemsList}/>
      </div>))
-
+console.log(props.groupList.map(group=>(group.itemsList)))
 
   return (
     <>
