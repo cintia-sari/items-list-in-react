@@ -40,11 +40,18 @@ function App() {
   }
 
   function handleDelet(id){
-      const newGroup= state.group.filter(group=>String(group.id) !== id);
+ 
+      const newGroup= state.group.filter(group=>{
+        console.log( String(group.id) !== id)
+        return String(group.id) !== id});
+
       setState({
-        group:newGroup
+        group:newGroup,
+        nextId: state.nextId ,
+        nextItemId:state.nextItemId
       })
   }
+
 
   function editingButton(id){
      const chooseItem= state.group.map(item=>{
@@ -93,13 +100,19 @@ function App() {
     }
 
     function itemDelet(id){
-        const newitemGroup= state.group.filter(item=>{ item.itemsList.id !== String(item.id)})
+      const newItem = state.group.map(group=>{
+        return group.itemsList.filter(items=>{
+        const newItem= String(items.id) !== id;
+         return newItem;
+        });
+      })
         setState({
-        group:newitemGroup,
+        group:newItem,
         nextId: state.nextId ,
-        nextItemId:state.nextItemId})
+        nextItemId:state.nextItemId}) 
+       
       }
-    
+      console.log(state.group)
 
   return (
     <div className="App">
