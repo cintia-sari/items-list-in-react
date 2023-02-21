@@ -15,13 +15,13 @@ function App() {
         itemsList:[{
           name :"Title name",
           itemrename:false,
-          id:0
+          id:0,
             }  
-        ],
-        nextItemId:1 
+        ], 
       }
       ],
       nextId:1 ,
+      nextItemId:1,
     }
   );
 
@@ -33,9 +33,9 @@ function App() {
         rename:false,
         id: state.nextId,
         itemsList:[],
-        nextItemId: state.group.nextItemId 
       }],
       nextId: state.nextId +1,
+      nextItemId: state.nextItemId 
     })
   }
 
@@ -46,7 +46,7 @@ function App() {
       })
   }
 
-  function editingButton(id){//Eza f
+  function editingButton(id){
      const chooseItem= state.group.map(item=>{
         if(String(item.id) === id){
           item.rename = !item.rename;
@@ -68,20 +68,38 @@ function App() {
       }
     return item 
   })
+
     setState({
       group: rename,
       nextId: state.nextId
     })
-      
-    
-  }
+       }
 
- /* function AddNewItem(id){
-    const newItem = state.group.map(item=>{
+  function addNewItem(id){
+   const newItem= state.group.map(item=>{
       if(String(item.id)=== id){
-        console.log(state.group[0].itemsList)
-        
-      }})}*/
+        item.itemsList = [...item.itemsList,{
+          name :"Title name",
+          itemrename:false,
+          id:state.nextItemId}]
+        }
+        return item
+      })
+      setState({
+      group:newItem,
+      nextId: state.nextId ,
+      nextItemId:state.nextItemId +1
+      })
+    }
+
+    function itemDelet(id){
+        const newitemGroup= state.group.filter(item=>{ item.itemsList.id !== String(item.id)})
+        setState({
+        group:newitemGroup,
+        nextId: state.nextId ,
+        nextItemId:state.nextItemId})
+      }
+    
 
   return (
     <div className="App">
@@ -91,7 +109,8 @@ function App() {
           handleDelet={handleDelet}
           editingButton={editingButton}
           renameButton={renameButton}
-         // AddNewItem={AddNewItem}
+          addNewItem={addNewItem}
+          itemDelet={itemDelet}
         />
     </div>
   );

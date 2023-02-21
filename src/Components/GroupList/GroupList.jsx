@@ -16,7 +16,7 @@ export default function GroupList(props) {
   }
 
   const addItem=(e)=>{
-    props.AddNewItem(e.target.dataset.id)
+    props.addNewItem( e.target.dataset.id)
   }
 
 
@@ -45,9 +45,10 @@ export default function GroupList(props) {
             <button onClick={editing} data-id={group.id}>Edit</button>
             <button onClick={addItem} data-id={group.id}>Add Item</button>
           </div>}
-          <ItemList itemList={group.itemsList}/>
+          <ItemList itemList={group.itemsList}
+                    itemsDelet={props.itemDelet}/>
      </div>))
-console.log(props.groupList.map(group=>(group.itemsList)))
+
 
   return (
     <>

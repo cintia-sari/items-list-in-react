@@ -7,17 +7,8 @@ export default function AddGroup(props) {
 
   }
   return (
-    <>
-      <form
-          action="#"
-          method='GET'
-          onSubmit={handleSubmit}
-          >
-            <div>
-              <button>Add New Group</button>
-            </div>
-
-      </form>
-    </>
+     <div>
+        <button onClick={handleSubmit}>Add New Group</button>
+     </div>
   )
 }
