@@ -112,6 +112,7 @@ function App() {
         nextItemId:state.nextItemId}) 
        
       }
+
       
       console.log(state.group)
 
