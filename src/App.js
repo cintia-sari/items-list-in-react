@@ -101,15 +101,16 @@ function App() {
 
     function itemDelete(id){
       
-     
-      const newItem = state.group.map(group=>{
+      const newItem = state.group.map(group=> Object.values(group.itemsList).filter(item=> item.id != id))
+    /*  const newItem = state.group.map(group=>{
+        
         return {
           title: group.title,
           rename:group.rename,
           id:group.id,
           itemsList:group.itemsList.filter(item=>String(item.id) !==id)
-        }
-      })
+        } 
+      }) */
         setState({
         group:newItem,
         nextId: state.nextId ,
