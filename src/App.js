@@ -42,7 +42,6 @@ function App() {
   function handleDelet(id){
  
       const newGroup= state.group.filter(group=>{
-        console.log( String(group.id) !== id)
         return String(group.id) !== id});
 
       setState({
@@ -100,9 +99,9 @@ function App() {
     }
 
     function itemDelete(id){
-      
-      const newItem = state.group.map(group=> Object.values(group.itemsList).filter(item=> item.id != id))
-    /*  const newItem = state.group.map(group=>{
+ 
+      //const newItem = state.group.map(group => Object.values(group.itemsList).filter(item=> item.id != id));
+     const newItem = state.group.map(group=>{
         
         return {
           title: group.title,
@@ -110,7 +109,8 @@ function App() {
           id:group.id,
           itemsList:group.itemsList.filter(item=>String(item.id) !==id)
         } 
-      }) */
+      }) 
+     
         setState({
         group:newItem,
         nextId: state.nextId ,

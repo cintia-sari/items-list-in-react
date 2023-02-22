@@ -7,9 +7,12 @@ export default function ItemList(props) {
      
   }
 
+ 
+
     const itemList= props.itemList.map(item=>(
                <div> {item.name}
                     <button onClick={delet} data-id={item.id}>delete</button>
+                    
                 </div>));
     
   return (
