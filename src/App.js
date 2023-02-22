@@ -102,12 +102,12 @@ function App() {
  
       //const newItem = state.group.map(group => Object.values(group.itemsList).filter(item=> item.id != id));
      const newItem = state.group.map(group=>{
-        
-        return {
-          title: group.title,
-          rename:group.rename,
-          id:group.id,
-          itemsList:group.itemsList.filter(item=>String(item.id) !==id)
+      return {
+        title: group.title,
+        rename:group.rename,
+        id:group.id,
+        itemsList:group.itemsList.filter(item=>String(item.id) !==id)
+      
         } 
       }) 
      
@@ -118,9 +118,49 @@ function App() {
        
       }
 
+      function itemEdit(id){
+        const itemEdited = state.group.map(group=>{
+        
+          return {
+            title: group.title,
+            rename:group.rename,
+            id:group.id,
+            itemsList:group.itemsList.map(item=> {
+              if(String(item.id) === id){
+                item.itemrename = !item.itemrename;
+              }
+              return item;
+                  })
+                }})
+       
+          setState({
+          group:itemEdited,
+          nextId: state.nextId ,
+          nextItemId:state.nextItemId}) 
+      }
 
-      console.log(state.group)
-
+      function itemRename(id,newName){
+        const itemEdited = state.group.map(group=>{
+        
+          return {
+            title: group.title,
+            rename:group.rename,
+            id:group.id,
+            itemsList:group.itemsList.map(item=> {
+              if(String(item.id) === id){
+                item.name = newName;
+              }
+              return item;
+                  })
+                }})
+       
+          setState({
+          group:itemEdited,
+          nextId: state.nextId ,
+          nextItemId:state.nextItemId}) 
+      
+      }
+console.log(state.group)
   return (
     <div className="App">
       <AddGroup groupAddition={groupAddition} />
@@ -131,6 +171,8 @@ function App() {
           renameButton={renameButton}
           addNewItem={addNewItem}
           itemDelete={itemDelete}
+          itemEdit={itemEdit}
+          itemRename={itemRename}
         />
     </div>
   );
