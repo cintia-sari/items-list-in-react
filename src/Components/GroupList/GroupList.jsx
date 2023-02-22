@@ -50,6 +50,7 @@ export default function GroupList(props) {
                     itemDelete={props.itemDelete}
                     itemEdit={props.itemEdit}
                     itemRename={props.itemRename}
+                    knowledgeChange={props.knowledgeChange}
                     />
      </div>))
 

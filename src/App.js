@@ -15,6 +15,8 @@ function App() {
         itemsList:[{
           name :"Title name",
           itemrename:false,
+          knowledge: 0,
+          theorem: false,
           id:0,
             }  
         ], 
@@ -87,7 +89,10 @@ function App() {
         item.itemsList = [...item.itemsList,{
           name :"Title name",
           itemrename:false,
-          id:state.nextItemId}]
+          knowledge: 0,
+          theorem: false,
+          id:state.nextItemId
+        }]
         }
         return item
       })
@@ -160,7 +165,28 @@ function App() {
           nextItemId:state.nextItemId}) 
       
       }
-console.log(state.group)
+
+    function knowledgeChange(id,newValue){
+      const itemEdited = state.group.map(group=>{
+        
+        return {
+          title: group.title,
+          rename:group.rename,
+          id:group.id,
+          itemsList:group.itemsList.map(item=> {
+            if(String(item.id) === id){
+              item.knowledge = newValue;
+            }
+            return item;
+                })
+              }})
+     
+        setState({
+        group:itemEdited,
+        nextId: state.nextId ,
+        nextItemId:state.nextItemId}) 
+    }
+
   return (
     <div className="App">
       <AddGroup groupAddition={groupAddition} />
@@ -173,6 +199,7 @@ console.log(state.group)
           itemDelete={itemDelete}
           itemEdit={itemEdit}
           itemRename={itemRename}
+          knowledgeChange={knowledgeChange}
         />
     </div>
   );
