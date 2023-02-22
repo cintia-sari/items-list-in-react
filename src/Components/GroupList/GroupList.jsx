@@ -46,7 +46,7 @@ export default function GroupList(props) {
             <button onClick={addItem} data-id={group.id}>Add Item</button>
           </div>}
           <ItemList itemList={group.itemsList}
-                    itemDelet={props.itemDelet}/>
+                    itemDelete={props.itemDelete}/>
      </div>))
 
 

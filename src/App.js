@@ -99,12 +99,16 @@ function App() {
       })
     }
 
-    function itemDelet(id){
+    function itemDelete(id){
+      
+     
       const newItem = state.group.map(group=>{
-        return group.itemsList.filter(items=>{
-        const newItem= String(items.id) !== id;
-         return newItem;
-        });
+        return {
+          title: group.title,
+          rename:group.rename,
+          id:group.id,
+          itemsList:group.itemsList.filter(item=>String(item.id) !==id)
+        }
       })
         setState({
         group:newItem,
@@ -113,7 +117,7 @@ function App() {
        
       }
 
-      
+
       console.log(state.group)
 
   return (
@@ -125,7 +129,7 @@ function App() {
           editingButton={editingButton}
           renameButton={renameButton}
           addNewItem={addNewItem}
-          itemDelet={itemDelet}
+          itemDelete={itemDelete}
         />
     </div>
   );
