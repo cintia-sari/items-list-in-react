@@ -28,8 +28,8 @@ const setTheorem=(e)=>{
 
 
     const itemList= props.itemList.map(item=>(
-      <div>{ item.itemrename === true ?
-                <div key={item.id} >
+      <div key={item.id}>{ item.itemrename === true ?
+                <div>
                   <label>
                     <input
                     value={item.name}

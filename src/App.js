@@ -11,7 +11,8 @@ function App() {
       group:[{
         title : "New Group",
         rename: false,
-        examDate:undefined,
+        examDate:null,
+        dayLeft:"-",
         setExamDate: false,
         id : 0, 
         itemsList:[{
@@ -36,7 +37,8 @@ function App() {
         title: "New Group",
         rename:false,
         id: state.nextId,
-        examDate:undefined,
+        examDate:null,
+        dayLeft:"-",
         setExamDate: false,
         itemsList:[],
       }],
@@ -111,12 +113,12 @@ function App() {
 
     function itemDelete(id){
  
-      //const newItem = state.group.map(group => Object.values(group.itemsList).filter(item=> item.id != id));
      const newItem = state.group.map(group=>{
       return {
         title: group.title,
         rename:group.rename,
         examDate:group.examDate,
+        dayLeft:group.dayLeft,
         setExamDate: group.setExamDate,
         id:group.id,
         itemsList:group.itemsList.filter(item=>String(item.id) !==id)
@@ -138,6 +140,7 @@ function App() {
             title: group.title,
             rename:group.rename,
             examDate:group.examDate,
+            dayLeft:group.dayLeft,
             setExamDate: group.setExamDate,
             id:group.id,
             itemsList:group.itemsList.map(item=> {
@@ -161,6 +164,7 @@ function App() {
             title: group.title,
             rename:group.rename,
             examDate:group.examDate,
+            dayLeft:group.dayLeft,
             setExamDate: group.setExamDate,
             id:group.id,
             itemsList:group.itemsList.map(item=> {
@@ -185,6 +189,7 @@ function App() {
           title: group.title,
           rename:group.rename,
           examDate:group.examDate,
+          dayLeft:group.dayLeft,
           setExamDate: group.setExamDate,
           id:group.id,
           itemsList:group.itemsList.map(item=> {
@@ -208,6 +213,7 @@ function App() {
           title: group.title,
           rename:group.rename,
           examDate:group.examDate,
+          dayLeft:group.dayLeft,
           setExamDate: group.setExamDate,
           id:group.id,
           itemsList:group.itemsList.map(item=> {
@@ -238,8 +244,40 @@ function App() {
       nextItemId:state.nextItemId
     })
     }
-  console.log(state.group)
+  
+    function setNewDate(id,newDate){
+      const setNewDate = state.group.map(item=>{
+        if(String(item.id) === id){
+          item.examDate= newDate
+        }
+        dayLeft();
+        return item
+      })
 
+      setState({
+        group: setNewDate,
+        nextId: state.nextId,
+        nextItemId:state.nextItemId
+      })
+    }
+    function dayLeft(){
+      const day1 = new Date();
+      const dayLeft= state.group.map(item=>{
+        const day2=new Date(item.examDate);
+        if(item.examDate !== null){
+          item.dayLeft = Math.round((Math.abs(day2-day1))/1000/60/60/24);
+        }
+        return item;
+      })
+
+      setState({
+        group: dayLeft,
+        nextId: state.nextId,
+        nextItemId:state.nextItemId
+      });
+    }
+
+   setTimeout(dayLeft,1000000)
   return (
     <div className="App">
       <AddGroup groupAddition={groupAddition} />
@@ -255,6 +293,7 @@ function App() {
           knowledgeChange={knowledgeChange}
           setTheTheorem={setTheTheorem}
           setExamDate={setExamDate}
+          setNewDate={setNewDate}
         />
     </div>
   );

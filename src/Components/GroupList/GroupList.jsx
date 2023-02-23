@@ -3,6 +3,8 @@ import ItemList from '../ItemList/ItemList';
 
 export default function GroupList(props) {
 
+  //const [dayLeft,setDayLeft]= React.useState('-')
+
   const delet=(e)=>{
      props.handleDelet(e.target.dataset.id);
   }
@@ -24,14 +26,13 @@ export default function GroupList(props) {
     }
 
   const newDate=(e)=>{
-    console.log(e.target.value)
-  //  props.setNewDate(e.target.dataset.id,e.target.value)
+    return props.setNewDate(e.target.dataset.id,e.target.value)
   }
 
 
   const groupList = props.groupList.map(group=>(
-    <div>{ group.rename ?
-         <div key={group.id}>
+    <div key={group.id}>{ group.rename ?
+         <div>
             <label>
               <input 
               type="text"
@@ -54,13 +55,15 @@ export default function GroupList(props) {
             <button onClick={editing} data-id={group.id}>Edit</button>
             <button onClick={addItem} data-id={group.id}>Add Item</button>
             <div> { group.setExamDate ?
-                     <label for="examDate">
-                      <input type="date" name="exam-date" onChange={newDate} data-id={group.id}/>
+                     <label for="examDate" key="examDate">
+                      <input type="date" name="exam-date" value={group.examDate} onChange={newDate} data-id={group.id}/>
                       <button onClick={examDateButton} data-id={group.id}>Save</button>
                       </label>
                     :
-                      <button onClick={examDateButton} data-id={group.id}>Exam Date</button>
-              
+                    <>
+                      <span>{group.dayLeft} day Left</span>
+                      <button onClick={examDateButton} data-id={group.id}>Set Date</button>
+                    </>
                   }
             </div>
           </div>}
