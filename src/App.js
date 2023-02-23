@@ -11,6 +11,8 @@ function App() {
       group:[{
         title : "New Group",
         rename: false,
+        examDate:undefined,
+        setExamDate: false,
         id : 0, 
         itemsList:[{
           name :"Title name",
@@ -34,6 +36,8 @@ function App() {
         title: "New Group",
         rename:false,
         id: state.nextId,
+        examDate:undefined,
+        setExamDate: false,
         itemsList:[],
       }],
       nextId: state.nextId +1,
@@ -64,7 +68,8 @@ function App() {
 
     setState({
       group: chooseItem,
-      nextId: state.nextId
+      nextId: state.nextId,
+      nextItemId:state.nextItemId
     })
     
   }
@@ -79,7 +84,8 @@ function App() {
 
     setState({
       group: rename,
-      nextId: state.nextId
+      nextId: state.nextId,
+      nextItemId:state.nextItemId
     })
        }
 
@@ -110,6 +116,8 @@ function App() {
       return {
         title: group.title,
         rename:group.rename,
+        examDate:group.examDate,
+        setExamDate: group.setExamDate,
         id:group.id,
         itemsList:group.itemsList.filter(item=>String(item.id) !==id)
       
@@ -129,6 +137,8 @@ function App() {
           return {
             title: group.title,
             rename:group.rename,
+            examDate:group.examDate,
+            setExamDate: group.setExamDate,
             id:group.id,
             itemsList:group.itemsList.map(item=> {
               if(String(item.id) === id){
@@ -150,6 +160,8 @@ function App() {
           return {
             title: group.title,
             rename:group.rename,
+            examDate:group.examDate,
+            setExamDate: group.setExamDate,
             id:group.id,
             itemsList:group.itemsList.map(item=> {
               if(String(item.id) === id){
@@ -172,6 +184,8 @@ function App() {
         return {
           title: group.title,
           rename:group.rename,
+          examDate:group.examDate,
+          setExamDate: group.setExamDate,
           id:group.id,
           itemsList:group.itemsList.map(item=> {
             if(String(item.id) === id){
@@ -187,6 +201,45 @@ function App() {
         nextItemId:state.nextItemId}) 
     }
 
+    function setTheTheorem( id){
+      const itemEdited = state.group.map(group=>{
+        
+        return {
+          title: group.title,
+          rename:group.rename,
+          examDate:group.examDate,
+          setExamDate: group.setExamDate,
+          id:group.id,
+          itemsList:group.itemsList.map(item=> {
+            if(String(item.id) === id){
+              item.theorem = !item.theorem;
+            }
+            return item;
+                })
+              }})
+     
+        setState({
+        group:itemEdited,
+        nextId: state.nextId ,
+        nextItemId:state.nextItemId}) 
+    }
+
+    function setExamDate(id){
+      const setDate= state.group.map(item=>{
+        if(String(item.id) === id){
+          item.setExamDate = !item.setExamDate;
+        }
+        return item
+     })
+
+    setState({
+      group: setDate,
+      nextId: state.nextId,
+      nextItemId:state.nextItemId
+    })
+    }
+  console.log(state.group)
+
   return (
     <div className="App">
       <AddGroup groupAddition={groupAddition} />
@@ -200,6 +253,8 @@ function App() {
           itemEdit={itemEdit}
           itemRename={itemRename}
           knowledgeChange={knowledgeChange}
+          setTheTheorem={setTheTheorem}
+          setExamDate={setExamDate}
         />
     </div>
   );

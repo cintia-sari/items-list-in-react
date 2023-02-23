@@ -19,6 +19,15 @@ export default function GroupList(props) {
     props.addNewItem( e.target.dataset.id)
   }
 
+  const examDateButton=(e)=>{
+    props.setExamDate(e.target.dataset.id)
+    }
+
+  const newDate=(e)=>{
+    console.log(e.target.value)
+  //  props.setNewDate(e.target.dataset.id,e.target.value)
+  }
+
 
   const groupList = props.groupList.map(group=>(
     <div>{ group.rename ?
@@ -44,6 +53,16 @@ export default function GroupList(props) {
             <button onClick={delet} data-id={group.id}>Delet</button>
             <button onClick={editing} data-id={group.id}>Edit</button>
             <button onClick={addItem} data-id={group.id}>Add Item</button>
+            <div> { group.setExamDate ?
+                     <label for="examDate">
+                      <input type="date" name="exam-date" onChange={newDate} data-id={group.id}/>
+                      <button onClick={examDateButton} data-id={group.id}>Save</button>
+                      </label>
+                    :
+                      <button onClick={examDateButton} data-id={group.id}>Exam Date</button>
+              
+                  }
+            </div>
           </div>}
           <ItemList
                     itemList={group.itemsList}
@@ -51,6 +70,7 @@ export default function GroupList(props) {
                     itemEdit={props.itemEdit}
                     itemRename={props.itemRename}
                     knowledgeChange={props.knowledgeChange}
+                    setTheTheorem={props.setTheTheorem}
                     />
      </div>))
 

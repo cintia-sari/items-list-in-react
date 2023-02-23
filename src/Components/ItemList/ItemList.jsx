@@ -3,6 +3,11 @@ import React from 'react';
 export default function ItemList(props) {
 
 
+
+const setTheorem=(e)=>{
+  props.setTheTheorem(e.target.dataset.id)
+}
+
   const delet=(e)=>{
      props.itemDelete(e.target.dataset.id)
      
@@ -19,6 +24,8 @@ export default function ItemList(props) {
  const setValue=(e)=>{
   props.knowledgeChange(e.target.dataset.id, e.target.value)
  }
+
+
 
     const itemList= props.itemList.map(item=>(
       <div>{ item.itemrename === true ?
@@ -55,8 +62,11 @@ export default function ItemList(props) {
                         <div><span>{item.knowledge}%</span>
                         </div>
                       <label>
-                        <input 
+                        <input
                           type="checkbox"
+                          checked={item.theorem}
+                          onChange={setTheorem}
+                          data-id={item.id}
                           />
                           i have theorem
                       </label>
