@@ -1,4 +1,6 @@
 import React from 'react';
+import Save from '@mui/icons-material/TaskAltRounded';
+import Delet from '@mui/icons-material/DeleteForeverRounded';
 
 export default function ItemList(props) {
 
@@ -39,14 +41,12 @@ const setTheorem=(e)=>{
                     onChange={rename}
                     required
                     />
-                    <button onClick={edit} data-id={item.id} >Ok</button>
+                    <Save onClick={edit} data-id={item.id}/>
                   </label>
                 </div>
               :
                 <div key={item.id}>
-                    {item.name}
-                    <button onClick={delet} data-id={item.id}>Delete</button>
-                    <button onClick={edit} data-id={item.id}>Edit</button>
+                  <Delet onClick={delet} data-id={item.id}/>
                     <div>
                       <label>
                        <div>level of knowledge :</div> 

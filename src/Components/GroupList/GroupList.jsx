@@ -1,5 +1,10 @@
 import React from 'react';
 import ItemList from '../ItemList/ItemList';
+import Delet from '@mui/icons-material/DeleteForeverRounded';
+import AddIcon from '@mui/icons-material/Add';
+import Calendar from '@mui/icons-material/CalendarMonthRounded';
+import OkCalendar from '@mui/icons-material/EventAvailableRounded';
+import Save from '@mui/icons-material/TaskAltRounded';
 
 export default function GroupList(props) {
 
@@ -7,6 +12,7 @@ export default function GroupList(props) {
 
   const delet=(e)=>{
      props.handleDelet(e.target.dataset.id);
+     console.log(e.target.dataset.id)
   }
 
   const editing=(e)=>{
@@ -42,27 +48,30 @@ export default function GroupList(props) {
               data-id={group.id}
               required
               />
-              <button 
-                onClick={editing}
-                data-id={group.id}
-                type='submit'>Save</button>
+              <Save
+              onClick={editing}
+              data-id={group.id}
+              type='submit' />
             </label>
          </div>
          : 
          <div key={group.id}>
-            {group.title}
-            <button onClick={delet} data-id={group.id}>Delet</button>
-            <button onClick={editing} data-id={group.id}>Edit</button>
-            <button onClick={addItem} data-id={group.id}>Add Item</button>
+            <div onDoubleClick={editing} data-id={group.id}>
+              {group.title}
+              <Delet onClick={delet} data-id={group.id}/>
+              </div>
+            
+            
+            <AddIcon onClick={addItem} data-id={group.id}/>
             <div> { group.setExamDate ?
                      <label for="examDate" key="examDate">
                       <input type="date" name="exam-date" value={group.examDate} onChange={newDate} data-id={group.id}/>
-                      <button onClick={examDateButton} data-id={group.id}>Save</button>
-                      </label>
+                      <OkCalendar button onClick={examDateButton} data-id={group.id}/>
+                     </label>
                     :
                     <>
                       <span>{group.dayLeft} day Left</span>
-                      <button onClick={examDateButton} data-id={group.id}>Set Date</button>
+                      <Calendar onClick={examDateButton} data-id={group.id}/>
                     </>
                   }
             </div>

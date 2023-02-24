@@ -1,4 +1,8 @@
-import React from 'react'
+import React from 'react';
+import AddToPhotosIcon from '@mui/icons-material/AddToPhotos';
+
+
+
 
 export default function AddGroup(props) {
   const handleSubmit=(e)=>{
@@ -8,7 +12,7 @@ export default function AddGroup(props) {
   }
   return (
      <div>
-        <button onClick={handleSubmit}>Add New Group</button>
+      <AddToPhotosIcon onClick={handleSubmit}/>
      </div>
   )
 }
