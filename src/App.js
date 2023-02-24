@@ -14,6 +14,7 @@ function App() {
         examDate:null,
         dayLeft:"-",
         setExamDate: false,
+        allKnowledge:0,
         id : 0, 
         itemsList:[{
           name :"Title name",
@@ -40,6 +41,7 @@ function App() {
         examDate:null,
         dayLeft:"-",
         setExamDate: false,
+        allKnowledge:0,
         itemsList:[],
       }],
       nextId: state.nextId +1,
@@ -120,6 +122,7 @@ function App() {
         examDate:group.examDate,
         dayLeft:group.dayLeft,
         setExamDate: group.setExamDate,
+        allKnowledge:group.allKnowledge,
         id:group.id,
         itemsList:group.itemsList.filter(item=>String(item.id) !==id)
       
@@ -142,6 +145,7 @@ function App() {
             examDate:group.examDate,
             dayLeft:group.dayLeft,
             setExamDate: group.setExamDate,
+            allKnowledge:group.allKnowledge,
             id:group.id,
             itemsList:group.itemsList.map(item=> {
               if(String(item.id) === id){
@@ -166,6 +170,7 @@ function App() {
             examDate:group.examDate,
             dayLeft:group.dayLeft,
             setExamDate: group.setExamDate,
+            allKnowledge:group.allKnowledge,
             id:group.id,
             itemsList:group.itemsList.map(item=> {
               if(String(item.id) === id){
@@ -191,6 +196,7 @@ function App() {
           examDate:group.examDate,
           dayLeft:group.dayLeft,
           setExamDate: group.setExamDate,
+          allKnowledge:group.allKnowledge,
           id:group.id,
           itemsList:group.itemsList.map(item=> {
             if(String(item.id) === id){
@@ -199,11 +205,12 @@ function App() {
             return item;
                 })
               }})
-     
         setState({
         group:itemEdited,
         nextId: state.nextId ,
         nextItemId:state.nextItemId}) 
+
+        allKnowledge()
     }
 
     function setTheTheorem( id){
@@ -215,6 +222,7 @@ function App() {
           examDate:group.examDate,
           dayLeft:group.dayLeft,
           setExamDate: group.setExamDate,
+          allKnowledge:group.allKnowledge,
           id:group.id,
           itemsList:group.itemsList.map(item=> {
             if(String(item.id) === id){
@@ -276,8 +284,29 @@ function App() {
         nextItemId:state.nextItemId
       });
     }
+   setTimeout(dayLeft,1000000);
 
-   setTimeout(dayLeft,1000000)
+   function allKnowledge(){
+    const setAllKnowledge = state.group.map(group=>{
+      
+      const knowledge= group.itemsList.map(item=>{const knowledge= item.knowledge;
+                                            return knowledge})
+      const knowledgeBlock=[];
+            knowledgeBlock.push(knowledge);
+      const addKnowledgeBlock=knowledgeBlock.reduce((a,b)=> a+b);
+      const NumConversion= addKnowledgeBlock.map(szam=>parseInt(szam));
+      const setAllKnowledge=parseInt((NumConversion.reduce((a,b)=>a+b))/NumConversion.length);
+      group.allKnowledge =setAllKnowledge;
+      return group}
+      );
+
+    setState({
+      group: setAllKnowledge,
+      nextId: state.nextId,
+      nextItemId:state.nextItemId,
+    });
+   }
+   
   return (
     <div className="App">
       <AddGroup groupAddition={groupAddition} />

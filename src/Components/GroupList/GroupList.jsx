@@ -57,11 +57,10 @@ export default function GroupList(props) {
          : 
          <div key={group.id}>
             <div onDoubleClick={editing} data-id={group.id}>
-              {group.title}
+              {group.title} 
               <Delet onClick={delet} data-id={group.id}/>
-              </div>
-            
-            
+            </div>
+            <div>All knowledge: {group.allKnowledge}% </div>
             <AddIcon onClick={addItem} data-id={group.id}/>
             <div> { group.setExamDate ?
                      <label for="examDate" key="examDate">

@@ -46,10 +46,11 @@ const setTheorem=(e)=>{
                 </div>
               :
                 <div key={item.id}>
+                  <span onDoubleClick={edit} data-id={item.id}>{item.name}</span>
                   <Delet onClick={delet} data-id={item.id}/>
                     <div>
                       <label>
-                       <div>level of knowledge :</div> 
+                       <div>level of knowledge : {item.knowledge}%</div> 
                         <input 
                             value={item.knowledge}
                             data-id={item.id}
@@ -59,7 +60,7 @@ const setTheorem=(e)=>{
                             max="100"
                             step="5" />
                         </label>
-                        <div><span>{item.knowledge}%</span>
+                        <div>
                         </div>
                       <label>
                         <input
