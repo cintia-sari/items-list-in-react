@@ -1,4 +1,6 @@
 import React from 'react';
+import "./GroupList.css";
+
 import ItemList from '../ItemList/ItemList';
 import Delet from '@mui/icons-material/DeleteForeverRounded';
 import AddIcon from '@mui/icons-material/Add';
