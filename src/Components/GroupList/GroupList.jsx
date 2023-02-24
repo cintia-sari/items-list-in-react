@@ -39,7 +39,7 @@ export default function GroupList(props) {
 
 
   const groupList = props.groupList.map(group=>(
-    <div key={group.id}>{ group.rename ?
+    <div key={group.id} className="examName">{ group.rename ?
          <div>
             <label>
               <input 

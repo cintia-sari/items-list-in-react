@@ -12,7 +12,7 @@ export default function AddGroup(props) {
 
   }
   return (
-     <div>
+     <div className='add-icon'>
       <AddToPhotosIcon onClick={handleSubmit}/>
      </div>
   )
