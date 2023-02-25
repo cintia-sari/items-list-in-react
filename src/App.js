@@ -9,7 +9,7 @@ function App() {
   const [state,setState]= useState(
     {
       group:[{
-        title : "New Group",
+        title : "Exam name...",
         rename: false,
         examDate:null,
         dayLeft:"-",
@@ -17,7 +17,7 @@ function App() {
         allKnowledge:0,
         id : 0, 
         itemsList:[{
-          name :"Title name",
+          name :"Theorem name...",
           itemrename:false,
           knowledge: 0,
           theorem: false,
@@ -35,7 +35,7 @@ function App() {
   function groupAddition(){
     setState({
       group:[...state.group,{
-        title: "New Group",
+        title: "Exam name...",
         rename:false,
         id: state.nextId,
         examDate:null,
@@ -97,7 +97,7 @@ function App() {
    const newItem= state.group.map(item=>{
       if(String(item.id)=== id){
         item.itemsList = [...item.itemsList,{
-          name :"Title name",
+          name :"Theorem name...",
           itemrename:false,
           knowledge: 0,
           theorem: false,
