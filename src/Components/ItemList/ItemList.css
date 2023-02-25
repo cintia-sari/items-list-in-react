@@ -1,0 +1,30 @@
+:root{
+    --green:#2CE77A;
+    --pink:#ff4699;
+    --darkblue:#2d3047;
+    --blue:#34395d;
+    --yellow:#fffd87;
+    --orange:#ff9b71;
+    --white :#fbf5f4;
+    --boxshadow:#171e49;
+  }
+
+  .item-list-group{
+    margin-top: 20px;
+    box-shadow:4px 10px 20px var(--boxshadow);
+    border-radius: 20px;
+    padding: 10px;
+  }
+
+  .item-title{
+  display: inline-block;
+  }
+  .item-title:hover{
+    cursor: pointer;
+    color:var(--pink);
+  }
+
+  .item-title-group{
+    display: flex;
+    justify-content:center;
+  }

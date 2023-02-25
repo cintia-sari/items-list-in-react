@@ -32,8 +32,8 @@ const setTheorem=(e)=>{
 
 
     const itemList= props.itemList.map(item=>(
-      <div key={item.id}>{ item.itemrename === true ?
-                <div>
+      <div key={item.id} className="item-list-group">{ item.itemrename === true ?
+                <div className='item-title-group'>
                   <label>
                     <input
                     value={item.name}
@@ -43,13 +43,14 @@ const setTheorem=(e)=>{
                     onChange={rename}
                     required
                     />
-                    <Save onClick={edit} data-id={item.id}/>
                   </label>
+                  <Save className='icon' onClick={edit} data-id={item.id}/>
                 </div>
               :
                 <div key={item.id}>
-                  <span onDoubleClick={edit} data-id={item.id}>{item.name}</span>
-                  <Delet onClick={delet} data-id={item.id}/>
+                  <div className='delet-icon-div'><Delet className='icon' onClick={delet} data-id={item.id}/></div>
+                  <h3 className='item-title' onDoubleClick={edit} data-id={item.id}>{item.name}</h3>
+                  
                     <div>
                       <label>
                        <div>level of knowledge : {item.knowledge}%</div> 

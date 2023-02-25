@@ -15,7 +15,7 @@
     display:inline-block;
     margin:20px;
     padding: 20px;
-    box-shadow:4px 4px 20px var(--boxshadow);
+    box-shadow:4px 10px 20px var(--boxshadow);
     border-radius: 20px;
     min-width: 300px;
   }
@@ -32,6 +32,7 @@
 
 .group-title{
   cursor: pointer;
+  display: inline-block;
 }
 .group-title:hover{
   color: var(--pink);
