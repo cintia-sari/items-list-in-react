@@ -12,8 +12,8 @@ export default function AddGroup(props) {
 
   }
   return (
-     <div className='add-icon'>
-      <AddToPhotosIcon onClick={handleSubmit}/>
-     </div>
+      <div className='div-add-icon'>
+       <AddToPhotosIcon onClick={handleSubmit} fontSize="inherit" className='add-icon'/>
+      </div>
   )
 }

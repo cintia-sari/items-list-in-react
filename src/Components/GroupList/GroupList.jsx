@@ -39,8 +39,8 @@ export default function GroupList(props) {
 
 
   const groupList = props.groupList.map(group=>(
-    <div key={group.id} className="examName">{ group.rename ?
-         <div>
+    <div key={group.id} className="examTable">{ group.rename ?
+        <div className='group-title-edit'>
             <label>
               <input 
               type="text"
@@ -50,21 +50,25 @@ export default function GroupList(props) {
               data-id={group.id}
               required
               />
+              </label>
               <Save
+              className='icon'
               onClick={editing}
               data-id={group.id}
               type='submit' />
-            </label>
-         </div>
-         : 
-         <div key={group.id}>
-            <div onDoubleClick={editing} data-id={group.id}>
-              {group.title} 
-              <Delet onClick={delet} data-id={group.id}/>
+        </div>
+        : 
+        <div key={group.id}>
+           <div className='delet-icon-div'><Delet onClick={delet} data-id={group.id} fontSize="inherit" className='icon'/></div>
+            <div>
+              <h2 onDoubleClick={editing} data-id={group.id} className="group-title" >
+                {group.title} 
+              </h2>
+    
             </div>
             <div>All knowledge: {group.allKnowledge}% </div>
-            <AddIcon onClick={addItem} data-id={group.id}/>
-            <div> { group.setExamDate ?
+            <AddIcon className='icon' onClick={addItem} data-id={group.id}/>
+                    <div> { group.setExamDate ?
                      <label for="examDate" key="examDate">
                       <input type="date" name="exam-date" value={group.examDate} onChange={newDate} data-id={group.id}/>
                       <OkCalendar button onClick={examDateButton} data-id={group.id}/>
@@ -75,8 +79,8 @@ export default function GroupList(props) {
                       <Calendar onClick={examDateButton} data-id={group.id}/>
                     </>
                   }
-            </div>
-          </div>}
+        </div>
+    </div>}
           <ItemList
                     itemList={group.itemsList}
                     itemDelete={props.itemDelete}

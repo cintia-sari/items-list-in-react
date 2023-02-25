@@ -9,10 +9,35 @@
     --boxshadow:#171e49;
   }
 
-  .examName{
+  .examTable{
+    display: flex;
     background-color: var(--blue);
     display:inline-block;
     margin:20px;
     padding: 20px;
     box-shadow:4px 4px 20px var(--boxshadow);
+    border-radius: 20px;
+    min-width: 300px;
   }
+
+.delet-icon-div{
+  display: flex;
+  justify-content:end;
+  font-size: 30px;
+}
+.icon:hover{
+  cursor: pointer;
+  color:var(--pink)
+}
+
+.group-title{
+  cursor: pointer;
+}
+.group-title:hover{
+  color: var(--pink);
+}
+
+.group-title-edit{
+  display: flex;
+  justify-content: center;
+}
