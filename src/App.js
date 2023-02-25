@@ -311,8 +311,8 @@ function App() {
     <>
     <h1 className='title'> Exam Preparation List</h1>
     <span className='description'>This app will help you understand how you're progressing in your learning. This will help you plan more efficiently.</span>
+    <AddGroup groupAddition={groupAddition} />
     <div className="App">
-      <AddGroup groupAddition={groupAddition} />
       <GroupList 
           groupList={state.group}
           handleDelet={handleDelet}

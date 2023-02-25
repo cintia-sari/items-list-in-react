@@ -17,7 +17,7 @@
     padding: 20px;
     box-shadow:4px 10px 20px var(--boxshadow);
     border-radius: 20px;
-    min-width: 300px;
+    width: 300px;
   }
 
 .delet-icon-div{
@@ -58,4 +58,8 @@
 .exam-date{
   font-size: 20px;
   margin-bottom: 10px;
+}
+
+.exam-table-group{
+  display:flex;
 }

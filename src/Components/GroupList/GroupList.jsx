@@ -91,7 +91,8 @@ export default function GroupList(props) {
                     knowledgeChange={props.knowledgeChange}
                     setTheTheorem={props.setTheTheorem}
                     />
-     </div>))
+     </div>
+  ))
 
 
   return (

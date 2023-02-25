@@ -15,6 +15,7 @@ html {
   color:var(--white);
   font-family: 'Oswald', sans-serif;
   min-width: 400px;
+  width: 100%;
 }
 
 .title {
@@ -29,4 +30,10 @@ html {
   padding: 20px;
   box-shadow:4px 4px 20px var(--boxshadow);
   border-radius: 20px;
+}
+
+.App{
+ display: flex;
+ justify-content: center;
+ flex-wrap: wrap;
 }
