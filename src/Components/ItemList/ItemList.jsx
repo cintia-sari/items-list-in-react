@@ -3,6 +3,9 @@ import "./ItemList.css";
 
 import Save from '@mui/icons-material/TaskAltRounded';
 import Delet from '@mui/icons-material/DeleteForeverRounded';
+import CloseIcon from '@mui/icons-material/Close';
+import DoneIcon from '@mui/icons-material/Done';
+import { ShapeLine } from '@mui/icons-material';
 
 export default function ItemList(props) {
 
@@ -52,9 +55,11 @@ const setTheorem=(e)=>{
                   <h3 className='item-title' onDoubleClick={edit} data-id={item.id}>{item.name}</h3>
                   
                     <div>
-                      <label>
-                       <div>level of knowledge : {item.knowledge}%</div> 
-                        <input 
+                      <div>
+                        <label>
+                          <h4 className='level'>level of knowledge : {item.knowledge}%</h4>
+                          <input
+                            className='istyle' 
                             value={item.knowledge}
                             data-id={item.id}
                             onChange={setValue}
@@ -63,17 +68,14 @@ const setTheorem=(e)=>{
                             max="100"
                             step="5" />
                         </label>
-                        <div>
-                        </div>
-                      <label>
-                        <input
-                          type="checkbox"
-                          checked={item.theorem}
-                          onChange={setTheorem}
-                          data-id={item.id}
-                          />
-                          i have theorem
-                      </label>
+                      </div>
+                      <div className='check-list'  >{item.theorem ?
+                        <DoneIcon className='icon green-icon' onClick={setTheorem} data-id={item.id} />
+                        :
+                        <CloseIcon className='icon red-icon'onClick={setTheorem} data-id={item.id} />
+                      }
+                      <span className='theorem'>I have a theorem</span>
+                      </div>
                     </div>
                 </div>
           } 

@@ -18,6 +18,7 @@
 
   .item-title{
   display: inline-block;
+  font-size: 22px;
   }
   .item-title:hover{
     cursor: pointer;
@@ -27,4 +28,49 @@
   .item-title-group{
     display: flex;
     justify-content:center;
+  }
+.level{
+    margin: 0;
+}
+
+
+input[type=range] {
+    -webkit-appearance: none;
+    margin: 10px 0;
+    width: 70%;
+  }
+ 
+  input[type=range]::-webkit-slider-runnable-track {
+    height: 5px;
+    cursor: pointer;
+    background: var(--white);
+  }
+
+  input[type=range]::-webkit-slider-thumb {
+    height: 20px;
+    width: 10px;
+    border-radius: 9px;
+    background:var(--pink);
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -5.5px;
+  }
+
+  .check-list{
+    display: flex;
+    justify-content: center;
+    margin:10px;
+  }
+
+  .theorem{
+    margin-left: 10px;
+  }
+
+  .green-icon{
+    color:var(--green);
+    font-size:50px;
+  }
+
+  .red-icon{
+    color:var(--orange)
   }

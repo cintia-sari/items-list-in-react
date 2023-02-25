@@ -33,6 +33,7 @@
 .group-title{
   cursor: pointer;
   display: inline-block;
+  font-size: 30px;
 }
 .group-title:hover{
   color: var(--pink);
@@ -44,9 +45,17 @@
 }
 
 .all-knowledge-div{
-  margin-bottom:10px;
+  margin:5px;
 }
 
 .add-icon-div{
   font-size: 30px;
+}
+
+.calendar-icon{
+  padding-left: 10px;
+}
+.exam-date{
+  font-size: 20px;
+  margin-bottom: 10px;
 }

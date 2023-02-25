@@ -67,19 +67,21 @@ export default function GroupList(props) {
     
             </div>
             <div className='all-knowledge-div'>All knowledge: {group.allKnowledge}% </div>
-            <div className='add-icon-div'><AddIcon className='icon' onClick={addItem} data-id={group.id} fontSize="inherit"/></div>
-                    <div> { group.setExamDate ?
-                     <label for="examDate" key="examDate">
-                      <input type="date" name="exam-date" value={group.examDate} onChange={newDate} data-id={group.id}/>
-                      <OkCalendar button onClick={examDateButton} data-id={group.id}/>
-                     </label>
-                    :
-                    <>
-                      <span>{group.dayLeft} day Left</span>
-                      <Calendar onClick={examDateButton} data-id={group.id}/>
-                    </>
-                  }
-        </div>
+            
+            <div className='exam-date'> { group.setExamDate ?
+              <label for="examDate" key="examDate">
+                <input type="date" className='exam-date'value={group.examDate} onChange={newDate} data-id={group.id}/>
+                <OkCalendar className='icon calendar-icon' fontSize="inherit" button onClick={examDateButton} data-id={group.id}/>
+              </label>
+           
+              :
+              <label>
+                {group.dayLeft} day Left
+                <Calendar fontSize="inherit" className='icon calendar-icon' onClick={examDateButton} data-id={group.id}/>
+              </label>
+              }
+            </div>
+            <div className='add-icon-div'><AddIcon className='icon' onClick={addItem} data-id={group.id} fontSize="inherit"/></div> 
     </div>}
           <ItemList
                     itemList={group.itemsList}
