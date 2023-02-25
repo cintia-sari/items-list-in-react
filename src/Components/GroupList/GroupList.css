@@ -41,3 +41,11 @@
   display: flex;
   justify-content: center;
 }
+
+.all-knowledge-div{
+  margin-bottom:10px;
+}
+
+.add-icon-div{
+  font-size: 30px;
+}

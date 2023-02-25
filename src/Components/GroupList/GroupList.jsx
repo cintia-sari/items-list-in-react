@@ -66,8 +66,8 @@ export default function GroupList(props) {
               </h2>
     
             </div>
-            <div>All knowledge: {group.allKnowledge}% </div>
-            <AddIcon className='icon' onClick={addItem} data-id={group.id}/>
+            <div className='all-knowledge-div'>All knowledge: {group.allKnowledge}% </div>
+            <div className='add-icon-div'><AddIcon className='icon' onClick={addItem} data-id={group.id} fontSize="inherit"/></div>
                     <div> { group.setExamDate ?
                      <label for="examDate" key="examDate">
                       <input type="date" name="exam-date" value={group.examDate} onChange={newDate} data-id={group.id}/>
