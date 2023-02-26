@@ -10,7 +10,6 @@ import Save from '@mui/icons-material/TaskAltRounded';
 
 export default function GroupList(props) {
 
-  //const [dayLeft,setDayLeft]= React.useState('-')
 
   const delet=(e)=>{
      props.handleDelet(e.target.dataset.id);
@@ -30,12 +29,14 @@ export default function GroupList(props) {
   }
 
   const examDateButton=(e)=>{
-    props.setExamDate(e.target.dataset.id)
+    props.setExamDate(e.target.dataset.id);
     }
 
   const newDate=(e)=>{
-    return props.setNewDate(e.target.dataset.id,e.target.value)
+    return props.setNewDate(e.target.dataset.id,e.target.value);
   }
+
+
 
 
   const groupList = props.groupList.map(group=>(
@@ -76,7 +77,7 @@ export default function GroupList(props) {
            
               :
               <label>
-                {group.dayLeft} day Left
+                {group.dayLeft} {group.dayLeft > 1 ? "days left" : "day left"}
                 <Calendar fontSize="inherit" className='icon calendar-icon' onClick={examDateButton} data-id={group.id}/>
               </label>
               }
