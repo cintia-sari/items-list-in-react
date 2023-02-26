@@ -89,7 +89,7 @@ export default function GroupList(props) {
                     itemEdit={props.itemEdit}
                     itemRename={props.itemRename}
                     knowledgeChange={props.knowledgeChange}
-                    setTheTheorem={props.setTheTheorem}
+                    setTheTopic={props.setTheTopic}
                     />
      </div>
   ))

@@ -5,14 +5,13 @@ import Save from '@mui/icons-material/TaskAltRounded';
 import Delet from '@mui/icons-material/DeleteForeverRounded';
 import CloseIcon from '@mui/icons-material/Close';
 import DoneIcon from '@mui/icons-material/Done';
-import { ShapeLine } from '@mui/icons-material';
 
 export default function ItemList(props) {
 
 
 
-const setTheorem=(e)=>{
-  props.setTheTheorem(e.target.dataset.id)
+const setTopic=(e)=>{
+  props.setTheTopic(e.target.dataset.id)
 }
 
   const delet=(e)=>{
@@ -69,12 +68,12 @@ const setTheorem=(e)=>{
                             step="5" />
                         </label>
                       </div>
-                      <div className='check-list'  >{item.theorem ?
-                        <DoneIcon className='icon green-icon' onClick={setTheorem} data-id={item.id} />
+                      <div className='check-list'  >{item.topic ?
+                        <DoneIcon className='icon green-icon' onClick={setTopic} data-id={item.id} />
                         :
-                        <CloseIcon className='icon red-icon'onClick={setTheorem} data-id={item.id} />
+                        <CloseIcon className='icon red-icon'onClick={setTopic} data-id={item.id} />
                       }
-                      <span className='theorem'>I have a theorem</span>
+                      <span className='topic'>I have a topic</span>
                       </div>
                     </div>
                 </div>

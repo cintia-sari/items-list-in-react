@@ -17,10 +17,10 @@ function App() {
         allKnowledge:0,
         id : 0, 
         itemsList:[{
-          name :"Theorem name...",
+          name :"Topic name...",
           itemrename:false,
           knowledge: 0,
-          theorem: false,
+          topic: false,
           id:0,
             }  
         ], 
@@ -97,10 +97,10 @@ function App() {
    const newItem= state.group.map(item=>{
       if(String(item.id)=== id){
         item.itemsList = [...item.itemsList,{
-          name :"Theorem name...",
+          name :"Topic name...",
           itemrename:false,
           knowledge: 0,
-          theorem: false,
+          topic: false,
           id:state.nextItemId
         }]
         }
@@ -128,12 +128,12 @@ function App() {
       
         } 
       }) 
-     
         setState({
         group:newItem,
         nextId: state.nextId ,
-        nextItemId:state.nextItemId}) 
-       
+        nextItemId:state.nextItemId})
+
+        allKnowledge()
       }
 
       function itemEdit(id){
@@ -213,7 +213,7 @@ function App() {
         allKnowledge()
     }
 
-    function setTheTheorem( id){
+    function setTheTopic( id){
       const itemEdited = state.group.map(group=>{
         
         return {
@@ -226,7 +226,7 @@ function App() {
           id:group.id,
           itemsList:group.itemsList.map(item=> {
             if(String(item.id) === id){
-              item.theorem = !item.theorem;
+              item.topic = !item.topic;
             }
             return item;
                 })
@@ -284,7 +284,6 @@ function App() {
         nextItemId:state.nextItemId
       });
     }
-   setTimeout(dayLeft,1000000);
 
    function allKnowledge(){
     const setAllKnowledge = state.group.map(group=>{
@@ -323,7 +322,7 @@ function App() {
           itemEdit={itemEdit}
           itemRename={itemRename}
           knowledgeChange={knowledgeChange}
-          setTheTheorem={setTheTheorem}
+          setTheTopic={setTheTopic}
           setExamDate={setExamDate}
           setNewDate={setNewDate}
         />
